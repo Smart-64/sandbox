@@ -1,4 +1,4 @@
-package stream.api;
+package stream;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
