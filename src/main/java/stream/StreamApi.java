@@ -15,7 +15,7 @@ public class StreamApi {
 //        System.out.println(stringStream.stream().map(String::length).collect(Collectors.toList()));
 //        System.out.println(stringStream.stream().flatMap(s -> Arrays.stream(s.split(" "))));
 
-        Path path = Path.of("file.txt");
+        Path path = Path.of("src/main/resources/file.txt");
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(System.out::println);
         } catch (Exception e) {
