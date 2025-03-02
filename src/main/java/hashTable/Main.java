@@ -20,6 +20,7 @@ public class Main {
 
         System.out.println(hashtable); // {First=1, Eight=8, Two=2}
 
+        // Сложность O(1) при поиске/вставке.
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("First", 1);
         hashMap.put("Eight", 8);
