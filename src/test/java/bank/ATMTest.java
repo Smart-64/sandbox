@@ -29,4 +29,9 @@ public class ATMTest {
         Assert.assertEquals(100, sdk.countBanknotes(50));
     }
 
+    @Test
+    public void testNull() {
+
+    }
+
 }
