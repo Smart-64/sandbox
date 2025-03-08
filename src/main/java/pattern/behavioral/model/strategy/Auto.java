@@ -4,7 +4,9 @@ public class Auto {
     private FillStrategy fillStrategy;
 
     public Auto(FillStrategy fillStrategy) {
+        int age = 10;
         this.fillStrategy = fillStrategy;
+        System.out.println(age);
     }
 
     public void drive() {
