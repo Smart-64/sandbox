@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 
 @Service
@@ -13,9 +14,16 @@ public class OrderService {
     private EntityManager entityManager;
 
     @Transactional
-    public void updateOrder(Long id, String description) {
+    public void updateOrderOptimistic(Long id, String description) {
         Order order = entityManager.find(Order.class, id);
         order.setDescription(description);
+        entityManager.merge(order);
+    }
+
+    @Transactional
+    public void updateOrderPessimistic(Long id, String description) {
+        Order order = entityManager.find(Order.class, id, LockModeType.PESSIMISTIC_WRITE);
+        order.setDescription("Completed");
         entityManager.merge(order);
     }
 

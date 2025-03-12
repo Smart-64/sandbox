@@ -38,11 +38,11 @@ public class MainDB {
     CommandLineRunner startThreads(OrderService service) {
         return args -> {
             Thread thread1 = new Thread(() -> {
-                service.updateOrder(2L, "thread1");
+                service.updateOrderOptimistic(2L, "thread1");
             });
 
             Thread thread2 = new Thread(() -> {
-                service.updateOrder(2L, "thread2"); // ObjectOptimisticLockingFailureException
+                service.updateOrderOptimistic(2L, "thread2"); // ObjectOptimisticLockingFailureException
             });
 
             thread1.start();
