@@ -12,14 +12,13 @@ public class MainDB {
     public static void main(String[] args) {
         SpringApplication.run(MainDB.class, args);
         // Hibernate First Level Cache включен по умолчанию (он хранит объекты в пределах одного Session)
+        // Hibernate Second Level Cache включается через ямл, хранит объекты во всех сессиях.
     }
 
     @Bean
     CommandLineRunner run(LibraryService service) {
         return args -> {
-            service.addAuthorWithBook();
-            System.out.println("Авторы в базе:");
-            service.getAllAuthors().forEach(author -> System.out.println(author.getName()));
+            service.testFirstLevelCache();
         };
     }
 }

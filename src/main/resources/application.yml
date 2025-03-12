@@ -10,6 +10,8 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
+        hibernate.cache.use_second_level_cache: true
+        hibernate.cache.region.factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
         show_sql: true
