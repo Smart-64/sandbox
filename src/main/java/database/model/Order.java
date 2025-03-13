@@ -2,6 +2,7 @@ package database.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import reflection.Person;
 
 import javax.persistence.*;
 
@@ -18,4 +19,8 @@ public class Order {
 
     @Version
     private Integer version;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 }
