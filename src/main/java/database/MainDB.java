@@ -60,22 +60,22 @@ public class MainDB {
 //        };
 //    }
 
-    @Bean
-    CommandLineRunner changeAmount(OrderService orderService) {
-        return args -> {
-
-            Product product = new Product();
-            product.setPrice(1000.0);
-            product.setName("Коробка");
-            orderService.saveProduct(product);
-
-            Order order = new Order();
-            order.setDescription("order1");
-            order.setVersion(100);
-            order.setProduct(product);
-            product.getOrders().add(order);
-
-            orderService.save(order);
-        };
-    }
+//    @Bean
+//    CommandLineRunner changeAmount(OrderService orderService) {
+//        return args -> {
+//
+//            Product product = new Product();
+//            product.setPrice(1000.0);
+//            product.setName("Коробка");
+//            orderService.saveProduct(product);
+//
+//            Order order = new Order();
+//            order.setDescription("order1");
+//            order.setVersion(100);
+//            order.setProduct(product);
+//            product.getOrders().add(order);
+//
+//            orderService.save(order);
+//        };
+//    }
 }

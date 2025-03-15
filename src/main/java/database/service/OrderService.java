@@ -2,9 +2,9 @@ package database.service;
 
 import database.model.Order;
 import database.model.Product;
+import database.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -16,6 +16,12 @@ import java.math.BigDecimal;
 public class OrderService {
     @PersistenceContext
     private EntityManager entityManager;
+
+    private final OrderRepository repository;
+
+    public OrderService(OrderRepository repository) {
+        this.repository = repository;
+    }
 
     @Transactional(isolation = Isolation.READ_COMMITTED) // Гарантирует, что транзакция видит только те изменения, которые были зафиксированы до ее начала.
     public void updateOrderOptimistic(Long id, String description) {
@@ -43,6 +49,10 @@ public class OrderService {
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void changeAmount(BigDecimal amount) {
+    }
 
+    @Transactional
+    public Order getOrderById(Long id) {
+        return repository.getReferenceById(id);
     }
 }
