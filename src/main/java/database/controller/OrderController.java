@@ -2,6 +2,7 @@ package database.controller;
 
 import database.model.Order;
 import database.service.OrderService;
+import exception.InvalidOrderException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +17,12 @@ public class OrderController {
     @GetMapping("/{id}")
     @ResponseBody
     public Order getOrder(@PathVariable(value = "id") Long id) {
-        Order order = service.getOrderById(id);
+        Order order = null;
+        try {
+            order = service.getOrderById(id);
+        } catch (InvalidOrderException e) {
+            System.out.println(e.getMessage());
+        }
         return order;
     }
 }

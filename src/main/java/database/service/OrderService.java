@@ -3,6 +3,7 @@ package database.service;
 import database.model.Order;
 import database.model.Product;
 import database.repository.OrderRepository;
+import exception.InvalidOrderException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,7 +53,7 @@ public class OrderService {
     }
 
     @Transactional
-    public Order getOrderById(Long id) {
+    public Order getOrderById(Long id) throws InvalidOrderException {
         return repository.getReferenceById(id);
     }
 }
