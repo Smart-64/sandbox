@@ -29,5 +29,22 @@ public class Main {
         hashMap.put("Null value", null);
 
         System.out.println(hashMap); // {null=777, Eight=8, Null value=null, First=1, Two=2}
+
+
+        HashMap<Integer, Integer> hashTable = new HashMap<>();
+        // Вставка/обновление
+        hashTable.put(1, 3);
+
+        // Поиск
+        int val = hashTable.get(1);
+        System.out.println(val);
+
+        // Удаление ключа "1"
+        hashTable.remove(1);
+
+        // Узнать размер
+        System.out.println(hashTable.size());
+        System.out.println(hashMap.get(1));
+
     }
 }
